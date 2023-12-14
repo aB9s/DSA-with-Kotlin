@@ -19,6 +19,7 @@ class LinkedList<T> {
             tail = newNode
         } else {
             tail?.next = newNode
+            newNode.previous = tail
             tail = newNode
         }
 
@@ -63,6 +64,7 @@ class LinkedList<T> {
                 tail = null
             } else if (head?.next != null) { // Use case #3
                 head = head?.next
+                head?.previous = null
             }
             size--
             return true
@@ -78,11 +80,38 @@ class LinkedList<T> {
                 tail = currentNode // Use case #4
             } else {
                 currentNode.next = currentNode.next?.next // Use case #5
+                currentNode.next?.previous = currentNode
             }
             size--
             return true
         }
 
         return false // Use case #6
+    }
+
+    fun isEmpty(): Boolean = head == null
+
+    fun forwardTraverse() {
+        if (isEmpty()) {
+            println("List is Empty")
+            return
+        }
+        var cNode = head
+        while (null != cNode) {
+            println(cNode.value)
+            cNode = cNode.next
+        }
+    }
+
+    fun reverseTraverse() {
+        if (isEmpty()) {
+            println("List is Empty")
+            return
+        }
+        var cNode = tail
+        while (null != cNode) {
+            println(cNode.value)
+            cNode = cNode.previous
+        }
     }
 }
