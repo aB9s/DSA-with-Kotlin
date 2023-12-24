@@ -2,7 +2,7 @@ package org.example.DSA.linear_ds
 
 import org.example.DSA.node.Node
 
-class LinkedList<T> {
+class SinglyLinkedList<T> {
 
     private var head: Node<T>? = null   // starting node in the linked list
     private var tail: Node<T>? = null   // last node in the linked list
@@ -12,6 +12,8 @@ class LinkedList<T> {
      * Inserts a new node at the end (tail) of the list.
      */
     fun insert(value: T) {
+        println("inserting ${value.toString()}")
+
         val newNode = Node(value)
 
         if (head == null) {
@@ -19,7 +21,6 @@ class LinkedList<T> {
             tail = newNode
         } else {
             tail?.next = newNode
-            newNode.previous = tail
             tail = newNode
         }
 
@@ -64,7 +65,6 @@ class LinkedList<T> {
                 tail = null
             } else if (head?.next != null) { // Use case #3
                 head = head?.next
-                head?.previous = null
             }
             size--
             return true
@@ -80,7 +80,6 @@ class LinkedList<T> {
                 tail = currentNode // Use case #4
             } else {
                 currentNode.next = currentNode.next?.next // Use case #5
-                currentNode.next?.previous = currentNode
             }
             size--
             return true
@@ -89,16 +88,16 @@ class LinkedList<T> {
         return false // Use case #6
     }
 
-    fun isEmpty(): Boolean = head == null
+    fun isEmpty(): Boolean = size == 0
 
     fun forwardTraverse() {
         if (isEmpty()) {
-            println("List is Empty")
+            println("List is Empty\n")
             return
         }
         var cNode = head
         while (null != cNode) {
-            println(cNode.value)
+            print("${cNode.value}\t")
             cNode = cNode.next
         }
     }
@@ -108,10 +107,14 @@ class LinkedList<T> {
             println("List is Empty")
             return
         }
-        var cNode = tail
-        while (null != cNode) {
-            println(cNode.value)
-            cNode = cNode.previous
+        _reverseTraverse(head)
+    }
+
+    private fun _reverseTraverse(cNode: Node<T>?){
+        if(null != cNode){
+            _reverseTraverse(cNode.next)
+            print("${cNode.value}\t")
         }
+
     }
 }
