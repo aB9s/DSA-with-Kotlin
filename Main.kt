@@ -1,11 +1,15 @@
 package org.example
 
 import org.example.DSA.linear_ds.SinglyLinkedList
+import org.example.DSA.trees.BasicBinaryTree
 
 fun main() {
 
     // Linked Lists
-    runLinkedList()
+//    runLinkedList()
+
+    // Binary Trees
+    runBinaryTrees()
 }
 
 private fun runLinkedList() {
@@ -55,4 +59,23 @@ private fun runSinglyLinkedList() {
     singlyLinkedList.forwardTraverse()
     println("\n")
 
+}
+
+
+fun runBinaryTrees() {
+    val bTree = BasicBinaryTree<Int>()
+
+    bTree.insert(16)
+    bTree.printTreeNode()
+
+    bTree.insert(listOf(17, 19,3,21,15,3,12,34), BasicBinaryTree.ExecutionType.IterationExecution)
+
+    println("\nPrint Tree Node: Post Order\n")
+    bTree.printTreeNode(BasicBinaryTree.BinaryTraverseType.Postorder)
+
+    println("\nPrint Tree Node: Pre Order\n")
+    bTree.printTreeNode(BasicBinaryTree.BinaryTraverseType.Preorder)
+
+    println("\nPrint Tree Node: In Order\n")
+    bTree.printTreeNode(BasicBinaryTree.BinaryTraverseType.Inorder)
 }
