@@ -1,4 +1,4 @@
-package org.example.DSA.node
+package org.example.DSA.data_structure.node
 
 /**
  * Represents a node in a linked list.

@@ -1,6 +1,6 @@
 package org.example.DSA.trees
 
-import org.example.DSA.node.TreeNode
+import org.example.DSA.data_structure.node.TreeNode
 
 class BasicBinaryTree<T : Comparable<T>> {
     var root: TreeNode<T>? = null; private set

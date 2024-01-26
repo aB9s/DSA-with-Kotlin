@@ -1,6 +1,6 @@
 package org.example.DSA.linear_ds
 
-import org.example.DSA.node.Node
+import org.example.DSA.data_structure.node.Node
 
 class SinglyLinkedList<T> {
 
